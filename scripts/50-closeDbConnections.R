@@ -1,0 +1,1 @@
+lapply( dbListConnections( dbDriver( drv = "MySQL")), dbDisconnect)

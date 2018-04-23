@@ -4,10 +4,13 @@ var appRouter = function (app) {
         res.status(200).send("Welcome to our restful API");
     });
 
-    app.get("/model/:token", function (req, res) {
+    app.get("/train/:token", function (req, res) {
+        var sh = require('shelljs');
         var token = req.params.token;
+        console.log(sh.exec('pwd'));
+        var command = sh.exec(['rscript', './generateModel.R', token].join(' ')).stdout;
 
-        res.status(200).send(token);
+        res.status(200).send(command);
     });
 }
 

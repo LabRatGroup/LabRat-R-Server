@@ -58,3 +58,6 @@ typings/
 .env
 .idea
 /node_modules/
+/.Rproj.user/
+data/labrat/models/*
+data/labrat/training/*

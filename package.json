@@ -1,0 +1,24 @@
+{
+  "name": "labrat-r-api-server",
+  "version": "1.0.0",
+  "description": "API Rest seerver for R script control",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/LabRatGroup/LabRat-R-API-Server.git"
+  },
+  "author": "Julio Fernández",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/LabRatGroup/LabRat-R-API-Server/issues"
+  },
+  "homepage": "https://github.com/LabRatGroup/LabRat-R-API-Server#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.3",
+    "shelljs": "^0.8.1"
+  }
+}

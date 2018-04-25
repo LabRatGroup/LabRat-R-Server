@@ -1,3 +1,6 @@
+# Querying data from MySQL
+data.query <- dbGetQuery(connection, sprintf("SELECT * FROM ml_model_state_training_datas WHERE token = '%s'", token))
+
 # Retrieving data for model analysis
 data.params <- fromJSON(data.query$params)
 dir <- paste(data.env$dataDir,"/",data.env$sftpUser, sep="")

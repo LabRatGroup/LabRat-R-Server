@@ -18,7 +18,30 @@
   "homepage": "https://github.com/LabRatGroup/LabRat-R-API-Server#readme",
   "dependencies": {
     "body-parser": "^1.18.2",
-    "express": "^4.16.3",
-    "shelljs": "^0.8.1"
+    "shelljs": "^0.8.1",
+    "bluebird": "^3.5.0",
+    "confit": "^2.2.1",
+    "electrolyte": "^0.5.0",
+    "eventemitter2": "^4.1.2",
+    "express": "^4.15.4",
+    "fs-extra": "^4.0.1",
+    "get-folder-size": "^1.0.0",
+    "lodash": "^4.17.4",
+    "moment": "^2.18.1",
+    "request": "^2.81.0",
+    "request-promise": "^4.2.1",
+    "shortstop-handlers": "^1.0.1",
+    "ssh2": "^0.5.5",
+    "ssh2-streams": "^0.1.19",
+    "underscore.string": "^3.3.4",
+    "winston": "^2.3.1",
+    "winston-daily-rotate-file": "^1.4.6"
+  }
+  "nodemonConfig": {
+    "ignore": [
+      "data/*",
+      "test/*"
+    ],
+    "delay": "1000"
   }
 }

@@ -11,4 +11,4 @@ connection <- dbConnect(
 # Catch collection token from script params
 args <- commandArgs(trailingOnly = TRUE)
 token <- args[1]
-#token <- "JKEIAMCzUCjmYoiRGhto2XIWB"
+#token <- "GWY2AWal1ESJZnQVeEVOjSYO4"

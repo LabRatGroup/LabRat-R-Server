@@ -1,5 +1,15 @@
+fl.min <- dfParams[row, "tune"]$fl$min
+fl.max <- dfParams[row, "tune"]$fl$max
+fl.step <- dfParams[row, "tune"]$fl$step
+
+usekernel <- dfParams[row, "tune"]$usekernel$value
+
+adjust.min <- dfParams[row, "tune"]$adjust$min
+adjust.max <- dfParams[row, "tune"]$adjust$max
+adjust.step <- dfParams[row, "tune"]$adjust$step
+
 grid <- expand.grid(
-  fL = seq(from = data.params$tune$fl$mix, to = data.params$tune$fl$max, by = data.params$tune$fl$step),
-  usekernel= data.params$tune$userkernel$value,
-  adjust = seq(from = data.params$tune$adjust$mix, to = data.params$tune$adjust$max, by = data.params$tune$adjust$step)
+  fL = seq(from = fl.min, to = fl.max, by = fl.step),
+  usekernel= usekernel,
+  adjust = seq(from = adjust.min, to = adjust.max, by = adjust.step)
 )

@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "API Rest seerver for R script control",
   "main": "app.js",
-  "engines":{
+  "engines": {
     "node": "9.10.1",
     "npm": "6.0.0"
   },

@@ -12,7 +12,7 @@ var appRouter = function (app) {
         console.log(sh.exec('pwd'));
         var command = sh.exec(['rscript', './generateModel.R', token].join(' '));
 
-        res.status(200).send(command);
+        res.status(command).send();
     });
 
     app.get("/predict/:token", function (req, res) {
@@ -23,7 +23,7 @@ var appRouter = function (app) {
         console.log(sh.exec('pwd'));
         var command = sh.exec(['rscript', './predict.R', token].join(' '));
 
-        res.status(200).send(command);
+        res.status(command).send();
     });
 }
 

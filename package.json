@@ -2,9 +2,9 @@
   "name": "labrat-r-server",
   "version": "1.0.0",
   "description": "API Rest seerver for R script control",
-  "main": "server.js",
+  "main": "dist/server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node dist/server.js"
   },
   "engines": {
     "node": "9.10.1",

@@ -1,7 +1,7 @@
 var appRouter = function (app) {
 
     app.get("/", function (req, res) {
-        res.status(200).send("Welcome to our restful API");
+        res.status(200).send("LabRar R server API services.");
     });
 
     app.get("/train/:token", function (req, res) {

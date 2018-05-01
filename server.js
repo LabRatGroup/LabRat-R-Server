@@ -4,11 +4,10 @@ const fs = require('fs');
 const Promise = require('bluebird');
 const SFTPServer = require('sftp-server');
 const path = require('path');
-const sftpPort = process.env.SFTP_PORT || 3333;
-const sftpApiPort = process.env.SFTP_API_PORT || 8000;
+const port = process.env.PORT || 3000;
 const server = require('sftp-server')({
     'sftp': {
-        'port': sftpPort,
+        'port': port,
         'hostKeys': [
             fs.readFileSync(__dirname + '/ssh/host_rsa').toString('utf8')
         ],
@@ -36,7 +35,7 @@ const server = require('sftp-server')({
         'rateLimitTTL': 10
     },
     'api': {
-        'port': sftpApiPort,
+        'port': port,
         'key': 'yYNR8xeUGtcim7XYaUTsdfmkNuKxLHjw77MbPMkZzKoNdsAzyMryVLJEzjVMHpHM'
     },
     'log': {
@@ -82,7 +81,7 @@ var app = express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-const port = process.env.PORT || 3000;
+
 
 routes(app);
 

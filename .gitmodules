@@ -1,3 +1,0 @@
-[submodule "sftp-server"]
-	path = sftp-server
-	url = git@github.com:tkambler/sftp-server.git

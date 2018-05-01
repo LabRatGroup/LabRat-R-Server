@@ -4,18 +4,9 @@ const fs = require('fs');
 const Promise = require('bluebird');
 const SFTPServer = require('sftp-server');
 const path = require('path');
-
-var express = require("express");
-var bodyParser = require("body-parser");
-var routes = require("./routes/routes.js");
-// var app = express();
-
-
-
-const port = process.env.PORT || 3000;
 const server = require('sftp-server')({
     'sftp': {
-        'port': port,
+        'port': 3333,
         'hostKeys': [
             fs.readFileSync(__dirname + '/ssh/host_rsa').toString('utf8')
         ],
@@ -43,7 +34,7 @@ const server = require('sftp-server')({
         'rateLimitTTL': 10
     },
     'api': {
-        'port': port,
+        'port': 8000,
         'key': 'yYNR8xeUGtcim7XYaUTsdfmkNuKxLHjw77MbPMkZzKoNdsAzyMryVLJEzjVMHpHM'
     },
     'log': {
@@ -74,12 +65,6 @@ const server = require('sftp-server')({
             // ...
         });
 
-        server.use(bodyParser.json());
-        server.use(bodyParser.urlencoded({ extended: true }));
-
-
-        routes(server);
-
         server.listen();
 
     })
@@ -88,8 +73,17 @@ const server = require('sftp-server')({
         throw err;
     });
 
+var express = require("express");
+var bodyParser = require("body-parser");
+var routes = require("./routes/routes.js");
+var app = express();
 
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+const port = process.env.PORT || 3000;
 
-// var rServer = app.listen(port, function () {
-//     console.log("R server app running on port.", rServer.address().port);
-// });
+routes(app);
+
+var rServer = app.listen(port, function () {
+    console.log("R server app running on port.", rServer.address().port);
+});

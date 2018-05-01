@@ -2,9 +2,9 @@
 
 const fs = require('fs');
 const Promise = require('bluebird');
-const SFTPServer = require('./sftp-server/');
+const SFTPServer = require('sftp-server');
 const path = require('path');
-const server = require('./sftp-server/')({
+const server = require('sftp-server')({
     'sftp': {
         'port': 3333,
         'hostKeys': [

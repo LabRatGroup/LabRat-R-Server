@@ -1,9 +1,17 @@
-model <- dfParams[row, "tune"]$model$value
-winnow <- dfParams[row, "tune"]$winnow$value
+#model <- dfParams[row, "tune"]$model$value
+#winnow <- dfParams[row, "tune"]$winnow$value
 
-trials.min <- dfParams[row, "tune"]$trials$min
-trials.max <- dfParams[row, "tune"]$trials$max
-trials.step <- dfParams[row, "tune"]$trials$step
+#trials.min <- dfParams[row, "tune"]$trials$min
+#trials.max <- dfParams[row, "tune"]$trials$max
+#trials.step <- dfParams[row, "tune"]$trials$step
+
+model <- dfParams$tune[[1]]$model$value[1]
+
+winnow <- dfParams$tune[[1]]$winnow$value[2]
+
+trials.min <- dfParams$tune[[1]]$trials.min$min[3]
+trials.max <- dfParams$tune[[1]]$trials.min$max[3]
+trials.step <- dfParams$tune[[1]]$trials.min$step[3]
 
 grid <- expand.grid(
   model = model,

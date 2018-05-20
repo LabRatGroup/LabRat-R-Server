@@ -1,10 +1,18 @@
-size.min <- dfParams[row, "tune"]$size$min
-size.max <- dfParams[row, "tune"]$size$max
-size.step <- dfParams[row, "tune"]$size$step
+#size.min <- dfParams[row, "tune"]$size$min
+#size.max <- dfParams[row, "tune"]$size$max
+#size.step <- dfParams[row, "tune"]$size$step
 
-decay.min <- dfParams[row, "tune"]$decay$min
-decay.max <- dfParams[row, "tune"]$decay$max
-decay.step <- dfParams[row, "tune"]$decay$step
+#decay.min <- dfParams[row, "tune"]$decay$min
+#decay.max <- dfParams[row, "tune"]$decay$max
+#decay.step <- dfParams[row, "tune"]$decay$step
+
+size.min <- dfParams$tune[[1]]$size$min[1]
+size.max <- dfParams$tune[[1]]$size$max[1]
+size.step <- dfParams$tune[[1]]$size$step[1]
+
+decay.min <- dfParams$tune[[1]]$decay.min$min[2]
+decay.max <- dfParams$tune[[1]]$decay.min$min[2]
+decay.step <- dfParams$tune[[1]]$decay.min$min[3]
 
 grid <- expand.grid(
   size = seq(from = size.min, to = size.max, by = size.step),

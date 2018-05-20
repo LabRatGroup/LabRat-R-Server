@@ -14,6 +14,7 @@ data.training <- data.raw[data.in_train, ]
 data.test <- data.raw[-data.in_train, ]
 
 dfParams <- as.data.frame(fromJSON(data.query$params))
+
 data.training.model <- list()
 data.training.prediction <- list()
 data.training.confusionMatrix <- list()

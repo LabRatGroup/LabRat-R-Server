@@ -9,7 +9,7 @@
 #adjust.step <- dfParams[row, "tune"]$adjust$step
 
 fl.min <- dfParams$tune[[1]]$fl$min[1]
-fl.max <- dfParams$tune[[1]]$fl$max1[1]
+fl.max <- dfParams$tune[[1]]$fl$max[1]
 fl.step <- dfParams$tune[[1]]$fl$step[1]
 
 usekernel <- dfParams$tune[[1]]$usekernel$value[2]

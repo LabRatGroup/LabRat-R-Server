@@ -1,6 +1,8 @@
 filename <- file.path(sprintf("%s/models",dir),sprintf("%s.rda", token))
 saveRDS(data.model, file=filename)
 
+data.stats <- as.data.frame(data.confusionMatrix$byClass)
+
 insertSql_1 <- "INSERT INTO `ml_model_state_scores` "
 insertSql_2 <- "(`results`, `token`, `ml_model_state_id`, `params`, `kappa`, `accuracy`, `confusion_matrix`, `sensitivity`, `specificity`, `precision`, `recall`, `created_at`, `updated_at`, `deleted_at`) values "
 insertSql_3 <- sprintf("('%s','%s',%s,'%s',%s ,%s ,'%s', %s, %s, %s, %s,'%s','%s',NULL)", 
@@ -11,10 +13,10 @@ insertSql_3 <- sprintf("('%s','%s',%s,'%s',%s ,%s ,'%s', %s, %s, %s, %s,'%s','%s
                        data.confusionMatrix$overall['Kappa'][[1]],
                        data.confusionMatrix$overall['Accuracy'][[1]],
                        toJSON(as.data.frame(data.confusionMatrix$table)),
-                       data.confusionMatrix$byClass['Sensitivity'][[1]],
-                       data.confusionMatrix$byClass['Specificity'][[1]],
-                       data.confusionMatrix$byClass['Precision'][[1]],
-                       data.confusionMatrix$byClass['Recall'][[1]],
+                       data.stats[paste0('Class: ',dfParams$positive),1],
+                       data.stats[paste0('Class: ',dfParams$positive),2],
+                       data.stats[paste0('Class: ',dfParams$positive),5],
+                       data.stats[paste0('Class: ',dfParams$positive),6],
                        Sys.time(),
                        Sys.time())
 

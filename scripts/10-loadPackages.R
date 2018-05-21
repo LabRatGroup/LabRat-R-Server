@@ -17,3 +17,5 @@ success <- sapply(libraries,require, quietly = FALSE,  character.only = TRUE)
 if(length(success) != length(libraries)) {stop("A package failed to return a success in require() function.")}
 
 require(jsonlite)
+
+options(verbose = FALSE)

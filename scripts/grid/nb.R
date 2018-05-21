@@ -8,15 +8,15 @@
 #adjust.max <- dfParams[row, "tune"]$adjust$max
 #adjust.step <- dfParams[row, "tune"]$adjust$step
 
-fl.min <- dfParams$tune[[1]]$fl$min[1]
-fl.max <- dfParams$tune[[1]]$fl$max[1]
-fl.step <- dfParams$tune[[1]]$fl$step[1]
+fl.min <- as.numeric(dfParams$tune[[1]]$fl$min[1])
+fl.max <- as.numeric(dfParams$tune[[1]]$fl$max[1])
+fl.step <- as.numeric(dfParams$tune[[1]]$fl$step[1])
 
 usekernel <- dfParams$tune[[1]]$usekernel$value[2]
 
-adjust.min <- dfParams$tune[[1]]$adjust$min[3]
-adjust.max <- dfParams$tune[[1]]$adjust$max[3]
-adjust.step <- dfParams$tune[[1]]$adjust$step[3]
+adjust.min <- as.numeric(dfParams$tune[[1]]$adjust$min[3])
+adjust.max <- as.numeric(dfParams$tune[[1]]$adjust$max[3])
+adjust.step <- as.numeric(dfParams$tune[[1]]$adjust$step[3])
 
 grid <- expand.grid(
   fL = seq(from = fl.min, to = fl.max, by = fl.step),

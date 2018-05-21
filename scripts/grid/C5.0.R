@@ -7,9 +7,9 @@
 
 model <- dfParams$tune[[1]]$model$value[1]
 
-trials.min <- dfParams$tune[[1]]$trials$min[2]
-trials.max <- dfParams$tune[[1]]$trials$max[2]
-trials.step <- dfParams$tune[[1]]$trials$step[2]
+trials.min <- as.numeric(dfParams$tune[[1]]$trials$min[2])
+trials.max <- as.numeric(dfParams$tune[[1]]$trials$max[2])
+trials.step <- as.numeric(dfParams$tune[[1]]$trials$step[2])
 
 winnow <- dfParams$tune[[1]]$winnow$value[3]
 

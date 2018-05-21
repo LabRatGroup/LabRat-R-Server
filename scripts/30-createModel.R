@@ -30,7 +30,7 @@ for (row in 1:nrow(dfParams)) {
   
   ctrl <- trainControl(
     method = trainControlMethod, 
-    number = trainControlMethodRounds
+    number = as.numeric(trainControlMethodRounds)
   )
 
   source(file.path("./scripts/grid/", sprintf("%s.R", method)))

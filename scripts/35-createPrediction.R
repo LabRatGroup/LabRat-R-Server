@@ -1,4 +1,6 @@
 # Querying data from MySQL
+#print('############### Querying data from MySQL');
+# FIX RELATION QUERY
 data.query <- dbGetQuery(connection, sprintf("SELECT cast(id as CHAR(25)) as id, token, file_path, cast(ml_model_prediction_id as CHAR(25)) as ml_model_prediction_id FROM ml_model_prediction_datas WHERE token = '%s'", token))
 data.state <- dbGetQuery(connection, sprintf("SELECT token FROM ml_model_state_training_datas WHERE ml_model_state_id = '%s'", data.query$ml_model_prediction_id))
 
@@ -8,6 +10,8 @@ data.raw <- read.csv(file.path(dir, data.query$file_path), header=TRUE, sep = ";
 
 
 #Predict
+#print('############### Predincting data');
+
 filename <- file.path(sprintf("%s/models",dir),sprintf("%s.rda", data.state$token))
 data.model <- readRDS(filename)
 data.prediction <- predict(data.model, data.raw)

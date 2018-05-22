@@ -8,22 +8,26 @@ var appRouter = function (app) {
         var sh = require('shelljs');
         var token = req.params.token;
 
-        console.log('Processing model training data for '+token);
+        console.log('Processing model training data for ' + token);
         console.log(sh.exec('pwd'));
         var command = sh.exec(['rscript', './generateModel.R', token].join(' '));
 
-        res.status(command).send();
+        console.log('########## TRAINING PROCESS RESPONSE:' + command);
+
+        res.status(command).send(command);
     });
 
     app.get("/predict/:token", function (req, res) {
         var sh = require('shelljs');
         var token = req.params.token;
 
-        console.log('Predicting data for '+token);
+        console.log('Predicting data for ' + token);
         console.log(sh.exec('pwd'));
         var command = sh.exec(['rscript', './predict.R', token].join(' '));
 
-        res.status(command).send();
+        console.log('########## PREDICTION PROCESS RESPONSE:' + command);
+
+        res.status(command).send(command);
     });
 }
 

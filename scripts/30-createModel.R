@@ -1,4 +1,6 @@
 # Querying data from MySQL
+#print('############### Querying data from MySQL');
+
 data.query <- dbGetQuery(connection, sprintf("SELECT token, params, file_path, cast(ml_model_state_id as CHAR(25)) as ml_model_state_id FROM ml_model_state_training_datas WHERE token = '%s'", token))
 
 # Retrieving data for model analysis
@@ -8,6 +10,8 @@ data.raw <- read.csv(file.path(dir, data.query$file_path), header=TRUE, sep = ";
 
 
 #Create model
+#print('############### Creating model');
+
 set.seed(123)
 data.in_train <- createDataPartition(data.raw$prediction, p = 0.67, list = FALSE)
 data.training <- data.raw[data.in_train, ]
@@ -57,4 +61,4 @@ for (row in 1:nrow(dfParams)) {
     data.params <- dfParams[row,]
   }
 }
-data.params
+#data.params

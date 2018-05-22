@@ -1,3 +1,4 @@
+options(warn = -1)
 tryCatch (
   {
     source("./scripts/10-loadPackages.R")

@@ -6,6 +6,8 @@
 #}
 
 # Load libraries and packages
+#print('############### Load libraries and packages');
+
 libraries <- c("RMySQL", "RJSONIO", "caret", "mongolite")
 check.libraries <- is.element(libraries, installed.packages()[, 1])==FALSE
 libraries.to.install <- libraries[check.libraries]

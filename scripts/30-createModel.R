@@ -1,7 +1,7 @@
 # Querying data from MySQL
 #print('############### Querying data from MySQL');
 
-data.query <- dbGetQuery(connection, sprintf("SELECT token, params, file_path, cast(ml_model_state_id as CHAR(25)) as ml_model_state_id FROM ml_model_state_training_datas WHERE token = '%s'", token))
+data.query <- dbGetQuery(connection, sprintf("SELECT cast(id as CHAR(25)) as id, token, params, file_path, cast(ml_model_id as CHAR(25)) as ml_model_id FROM ml_model_states WHERE token = '%s'", token))
 
 # Retrieving data for model analysis
 data.params <- fromJSON(data.query$params)

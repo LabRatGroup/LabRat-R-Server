@@ -1,8 +1,8 @@
 # Querying data from MySQL
 #print('############### Querying data from MySQL');
 # FIX RELATION QUERY
-data.query <- dbGetQuery(connection, sprintf("SELECT cast(id as CHAR(25)) as id, token, file_path, cast(ml_model_prediction_id as CHAR(25)) as ml_model_prediction_id FROM ml_model_prediction_datas WHERE token = '%s'", token))
-data.state <- dbGetQuery(connection, sprintf("SELECT token FROM ml_model_state_training_datas WHERE ml_model_state_id = '%s'", data.query$ml_model_prediction_id))
+data.query <- dbGetQuery(connection, sprintf("SELECT cast(id as CHAR(25)) as id, token, file_path, cast(ml_model_id as CHAR(25)) as ml_model_id FROM ml_model_predictions WHERE token = '%s'", token))
+data.state <- dbGetQuery(connection, sprintf("SELECT token FROM ml_model_states WHERE is_current=1 and ml_model_id = '%s'", data.query$ml_model_id))
 
 # Retrieving data for model analysis
 dir <- paste(data.env$dataDir,"/",data.env$sftpUser, sep="")

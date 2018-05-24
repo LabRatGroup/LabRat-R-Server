@@ -22,7 +22,7 @@ insertSql_2 <- "(`results`, `token`, `ml_model_state_id`, `params`, `kappa`, `ac
 insertSql_3 <- sprintf("('%s','%s',%s,'%s',%s ,%s ,'%s', %s, %s, %s, %s,'%s','%s',NULL)", 
                        toJSON(data.model$results),
                        data.query$token, 
-                       data.query$ml_model_state_id, 
+                       data.query$id, 
                        toJSON(data.params), 
                        data.confusionMatrix$overall['Kappa'][[1]],
                        data.confusionMatrix$overall['Accuracy'][[1]],

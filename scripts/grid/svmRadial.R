@@ -6,13 +6,13 @@
 #sigma.max <- dfParams[row, "tune"]$sigma$max
 #sigma.step <- dfParams[row, "tune"]$sigma$step
 
-c.min <- as.numeric(dfParams$tune[[1]]$C$min[1])
-c.max <- as.numeric(dfParams$tune[[1]]$C$min[1])
-c.step <- as.numeric(dfParams$tune[[1]]$C$min[1])
+c.min <- as.numeric(dfParams$tune[[index]]$C$min[1])
+c.max <- as.numeric(dfParams$tune[[index]]$C$min[1])
+c.step <- as.numeric(dfParams$tune[[index]]$C$min[1])
 
-sigma.min <- as.numeric(dfParams$tune[[1]]$sigma$min[2])
-sigma.max <- as.numeric(dfParams$tune[[1]]$sigma$min[2])
-sigma.step <- as.numeric(dfParams$tune[[1]]$sigma$min[2])
+sigma.min <- as.numeric(dfParams$tune[[index]]$sigma$min[2])
+sigma.max <- as.numeric(dfParams$tune[[index]]$sigma$min[2])
+sigma.step <- as.numeric(dfParams$tune[[index]]$sigma$min[2])
 
 grid <- expand.grid(
   C = seq(from = c.min, to = c.max, by = c.step),

@@ -23,42 +23,55 @@ data.training.model <- list()
 data.training.prediction <- list()
 data.training.confusionMatrix <- list()
 max = 0
+index <- 1
 
 for (row in 1:nrow(dfParams)) {
-  method <- dfParams[row, "method"]
-  metric <- dfParams[row, "metric"]
-  preprocessing <- dfParams[row, "preprocessing"]
-  positive <- dfParams[row, "positive"]
-  trainControlMethod <- dfParams[row, "control"]$trainControlMethod
-  trainControlMethodRounds <- dfParams[row, "control"]$trainControlMethodRounds
-  
-  ctrl <- trainControl(
-    method = trainControlMethod, 
-    number = as.numeric(trainControlMethodRounds)
+  tryCatch(
+    {
+      method <- dfParams[row, "method"]
+      metric <- dfParams[row, "metric"]
+      preprocessing <- dfParams[row, "preprocessing"]
+      positive <- dfParams[row, "positive"]
+      trainControlMethod <- dfParams[row, "control"]$trainControlMethod
+      trainControlMethodRounds <- dfParams[row, "control"]$trainControlMethodRounds
+      
+      ctrl <- trainControl(
+        method = trainControlMethod, 
+        number = as.numeric(trainControlMethodRounds)
+      )
+      
+      source(file.path("./scripts/grid/", sprintf("%s.R", method)))
+      
+      data.training.model[[method]] <- train(
+        prediction ~ ., 
+        data = data.training,
+        method = method,
+        preProcess = c(preprocessing),
+        trControl = ctrl,
+        tuneGrid = grid,
+        metric = metric
+      )
+      
+      data.training.prediction[[method]] <- predict(data.training.model[[method]], data.test)
+      data.training.confusionMatrix[[method]] <- confusionMatrix(data.training.prediction[[method]],  data.test$prediction, positive = positive)
+      
+      metricValue <- data.training.confusionMatrix[[method]]$overall[[metric]]
+      if(metricValue >= max) {
+        max <- metricValue
+        data.model <- data.training.model[[method]]
+        data.prediction <- data.training.prediction[[method]]
+        data.confusionMatrix <- data.training.confusionMatrix[[method]]
+        data.params <- dfParams[row,]
+      }
+    }, error = function(err) {
+      cat(500)
+    }, finnaly = {
+      cat(200)
+    }
   )
 
-  source(file.path("./scripts/grid/", sprintf("%s.R", method)))
   
-  data.training.model[[method]] <- train(
-    prediction ~ ., 
-    data = data.training,
-    method = method,
-    preProcess = c(preprocessing),
-    trControl = ctrl,
-    tuneGrid = grid,
-    metric = metric
-  )
-
-  data.training.prediction[[method]] <- predict(data.training.model[[method]], data.test)
-  data.training.confusionMatrix[[method]] <- confusionMatrix(data.training.prediction[[method]],  data.test$prediction, positive = positive)
+  index <- index+1
   
-  metricValue <- data.training.confusionMatrix[[method]]$overall[[metric]]
-  if(metricValue >= max) {
-    max <- metricValue
-    data.model <- data.training.model[[method]]
-    data.prediction <- data.training.prediction[[method]]
-    data.confusionMatrix <- data.training.confusionMatrix[[method]]
-    data.params <- dfParams[row,]
-  }
 }
 #data.params

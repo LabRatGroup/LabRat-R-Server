@@ -36,3 +36,11 @@ insertSql_3 <- sprintf("('%s','%s',%s,'%s',%s ,%s ,'%s', %s, %s, %s, %s,'%s','%s
 
 insertSql <- paste0(insertSql_1, insertSql_2, insertSql_3, seq="")
 dbExecute(connection, insertSql)
+
+data.algorithm <- dbGetQuery(connection, sprintf("SELECT cast(id as CHAR(25)) as id FROM ml_algorithms WHERE alias = '%s'", data.params$method))
+
+
+if(index > 1){
+  updateSQL <- sprintf("UPDATE ml_model_states set ml_algorithm_id = %s, params = '%s' WHERE id = %s", data.algorithm$id, toJSON(data.params), data.query$id)
+  dbExecute(connection, updateSQL)
+}

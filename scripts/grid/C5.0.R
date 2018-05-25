@@ -5,13 +5,13 @@
 #trials.max <- dfParams[row, "tune"]$trials$max
 #trials.step <- dfParams[row, "tune"]$trials$step
 
-model <- dfParams$tune[[1]]$model$value[1]
+model <- dfParams$tune[[index]]$model$value[1]
 
-trials.min <- as.numeric(dfParams$tune[[1]]$trials$min[2])
-trials.max <- as.numeric(dfParams$tune[[1]]$trials$max[2])
-trials.step <- as.numeric(dfParams$tune[[1]]$trials$step[2])
+trials.min <- as.numeric(dfParams$tune[[index]]$trials$min[2])
+trials.max <- as.numeric(dfParams$tune[[index]]$trials$max[2])
+trials.step <- as.numeric(dfParams$tune[[index]]$trials$step[2])
 
-winnow <- dfParams$tune[[1]]$winnow$value[3]
+winnow <- dfParams$tune[[index]]$winnow$value[3]
 
 
 

@@ -2,9 +2,9 @@
 
 const fs = require('fs');
 const Promise = require('bluebird');
-const SFTPServer = require('./sftp-server/');
+const SFTPServer = require('sftp-server');
 const path = require('path');
-const server = require('./sftp-server/')({
+const server = require('sftp-server')({
     'sftp': {
         'port': 3333,
         'hostKeys': [
@@ -80,9 +80,10 @@ var app = express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+const port = process.env.PORT || 3030;
 
 routes(app);
 
-var rServer = app.listen(3000, function () {
-    console.log("app running on port.", rServer.address().port);
+var rServer = app.listen(port, function () {
+    console.log("R server app running on port.", rServer.address().port);
 });

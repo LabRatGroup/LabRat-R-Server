@@ -1,3 +1,7 @@
+k.min <- as.numeric(dfParams$tune[[index]]$k$min)
+k.max <- as.numeric(dfParams$tune[[index]]$k$max)
+k.step <- as.numeric(dfParams$tune[[index]]$k$step)
+
 grid <- expand.grid(
-  k = seq(from = data.params$tune$k$mix, to = data.params$tune$k$max, by = data.params$tune$k$step)
+  k = seq(from = k.min, to = k.max, by = k.step)
 )

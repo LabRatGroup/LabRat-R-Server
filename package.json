@@ -1,10 +1,14 @@
 {
-  "name": "labrat-r-api-server",
+  "name": "labrat-r-server",
   "version": "1.0.0",
-  "description": "API Rest seerver for R script control",
-  "main": "app.js",
+  "description": "API Rest server for R scripts and SFTP server",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": "9.10.1",
+    "npm": "6.0.0"
   },
   "repository": {
     "type": "git",
@@ -35,8 +39,9 @@
     "ssh2-streams": "^0.1.19",
     "underscore.string": "^3.3.4",
     "winston": "^2.3.1",
-    "winston-daily-rotate-file": "^1.4.6"
-  }
+    "winston-daily-rotate-file": "^1.4.6",
+    "sftp-server": "https://github.com/tkambler/sftp-server.git"
+  },
   "nodemonConfig": {
     "ignore": [
       "data/*",

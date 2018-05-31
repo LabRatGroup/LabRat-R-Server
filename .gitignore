@@ -59,7 +59,7 @@ typings/
 .idea
 /node_modules/
 /.Rproj.user/
-data/labrat/models/*
-data/labrat/training/*
+/data/labrat/models/*
+/data/labrat/training/*
 .Rproj.user
-/data/labrat/predictions/
+/data/labrat/predictions/*

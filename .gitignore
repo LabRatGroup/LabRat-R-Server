@@ -63,3 +63,4 @@ typings/
 /data/labrat/training/*
 .Rproj.user
 /data/labrat/predictions/*
+/env

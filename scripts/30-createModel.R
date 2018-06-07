@@ -25,6 +25,9 @@ data.training.confusionMatrix <- list()
 max = 0
 index <- 1
 
+cl <- makeCluster(detectCores())
+registerDoParallel(cl)
+
 for (row in 1:nrow(dfParams)) {
   tryCatch(
     {
@@ -74,4 +77,5 @@ for (row in 1:nrow(dfParams)) {
   index <- index+1
   
 }
+stopCluster(cl)
 #data.params

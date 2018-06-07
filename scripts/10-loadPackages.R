@@ -8,7 +8,7 @@
 # Load libraries and packages
 #print('############### Load libraries and packages');
 
-libraries <- c("RMySQL", "RJSONIO", "caret", "mongolite")
+libraries <- c("RMySQL", "RJSONIO", "caret", "mongolite", "doParallel")
 check.libraries <- is.element(libraries, installed.packages()[, 1])==FALSE
 libraries.to.install <- libraries[check.libraries]
 if (length(libraries.to.install!=0)) {
@@ -19,5 +19,6 @@ success <- sapply(libraries,require, quietly = FALSE,  character.only = TRUE)
 if(length(success) != length(libraries)) {stop("A package failed to return a success in require() function.")}
 
 require(jsonlite)
+library(doParallel)
 
 options(verbose = FALSE)

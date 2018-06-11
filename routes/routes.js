@@ -10,11 +10,11 @@ var appRouter = function (app) {
 
         console.log('Processing model training data for ' + token);
         console.log(sh.exec('pwd'));
-        var command = sh.exec(['Rscript', '/var/www/LabRat-R-Server/generateModel.R', token].join(' '));
+        var command = sh.exec(['Rscript', './generateModel.R', token].join(' '));
 
         console.log('########## TRAINING PROCESS RESPONSE:' + command);
 
-        res.status(command).send(command);
+        res.status(200).send(command);
     });
 
     app.get("/predict/:token", function (req, res) {
@@ -27,7 +27,7 @@ var appRouter = function (app) {
 
         console.log('########## PREDICTION PROCESS RESPONSE:' + command);
 
-        res.status(command).send(command);
+        res.status(200).send(command);
     });
 }
 

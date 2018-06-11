@@ -1,3 +1,0 @@
-dbUser,dbpassword,dbHost,dbPort,dbName,sftpUser,sftpPassword,sftpPassword,sftpPort,dataDir,mongoUser,mongoPassword,mongoDb,mongoPort
-root,01time688,127.0.0.1,3306,labrat,labrat,68FGuksE25UzhAm4,127.0.0.1,3333,data,labrat,01time688,labrat,27017
-
